@@ -1,0 +1,136 @@
+@import "tailwindcss";
+@import "./styles/animations.css";
+@import "./styles/cursor.css";
+
+/* ── Reset global — FIX scroll horizontal ────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ── Ticker ──────────────────────────────────────── */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+@media (hover: hover) {
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 640px) {
+  .ticker-track {
+    animation-duration: 20s;
+  }
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* ── Bottle float ────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-14px); }
+}
+
+/* ── Orbit rings ─────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinR {
+  from { transform: rotate(0deg);    }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes pulseRing {
+  0%, 100% { opacity: 0.7; transform: scale(1);   }
+  50%       { opacity: 1;   transform: scale(1.4); }
+}
+
+/* ── Buttons ─────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-radius: 100px;
+  border: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+  white-space: nowrap;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.bp {
+  background: #1257F5;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(18, 87, 245, 0.3);
+}
+.bp:hover { box-shadow: 0 10px 36px rgba(18, 87, 245, 0.45); }
+
+.bg {
+  background: transparent;
+  color: #060F24;
+  border: 1.5px solid rgba(6, 15, 36, 0.08);
+}
+.bg:hover { border-color: rgba(6, 15, 36, 0.22); }
+
+.bi {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(8px);
+}
+.bi:hover { background: rgba(255, 255, 255, 0.24); }
+
+/* ── Input ───────────────────────────────────────── */
+.inp {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 14px 20px;
+  border-radius: 100px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+  min-width: 0;
+  width: 100%;
+}
+.inp::placeholder { color: rgba(255, 255, 255, 0.35); }
+.inp:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+}

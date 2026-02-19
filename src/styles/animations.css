@@ -1,0 +1,67 @@
+/* Animations complexes - à conserver en CSS pur */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinR {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulseRing {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(18,87,245,.25); }
+  50% { box-shadow: 0 0 0 16px rgba(18,87,245,0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+/* ─────────────────────────────────────────────
+   Ticker — à coller dans animations.css ou index.css
+   ───────────────────────────────────────────── */
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ticker-scroll 28s linear infinite;
+}
+
+/* Pause au survol (desktop uniquement) */
+@media (hover: hover) {
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+/* Réduit la vitesse sur mobile pour ne pas être illisible */
+@media (max-width: 640px) {
+  .ticker-track {
+    animation-duration: 20s;
+  }
+}
