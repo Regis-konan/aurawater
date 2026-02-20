@@ -10,7 +10,7 @@ const ITEMS = [
   "Alpine Certified",
   "Glacial Origin",
 ];
-
+ 
 const Sep = () => (
   <span className="mx-5 sm:mx-7 text-white/25 text-[10px]">◆</span>
 );

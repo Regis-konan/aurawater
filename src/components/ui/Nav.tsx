@@ -27,14 +27,14 @@ const WaveBurger = ({ open, color }: { open: boolean; color: string }) => (
   <svg width="26" height="22" viewBox="0 0 26 22" fill="none" style={{ overflow: 'visible' }}>
     <motion.path strokeWidth="1.7" strokeLinecap="round" stroke={color}
       animate={{ d: open ? 'M 3 3 L 23 19' : 'M 1 4 Q 6 2 13 4 Q 19 6 25 4' }}
-      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }} />
+      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] as const }} />
     <motion.path strokeWidth="1.7" strokeLinecap="round" stroke={color}
       animate={{ d: 'M 1 11 Q 6 9 13 11 Q 19 13 25 11', opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }}
       style={{ transformOrigin: '13px 11px' }}
-      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }} />
+      transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }} />
     <motion.path strokeWidth="1.7" strokeLinecap="round" stroke={color}
       animate={{ d: open ? 'M 3 19 L 23 3' : 'M 1 18 Q 6 16 13 18 Q 19 20 25 18' }}
-      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }} />
+      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] as const }} />
   </svg>
 );
 
@@ -146,9 +146,10 @@ export const Nav = () => {
             Order Now
           </motion.button>
 
+          {/* aria-expanded en string pour conformité ARIA */}
           <button
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
+            aria-expanded={menuOpen ? 'true' : 'false'}
             aria-controls="water-menu"
             onClick={() => setMenuOpen(o => !o)}
             className="flex md:hidden items-center justify-center relative z-[200] bg-transparent border-none p-2 -mr-1 cursor-pointer"

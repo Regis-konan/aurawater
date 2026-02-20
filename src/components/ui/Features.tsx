@@ -3,7 +3,7 @@ import { useScrollTo } from '../../hooks/useScrollTo';
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const } },
 };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
 
@@ -40,7 +40,7 @@ export const Features = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
             whileHover={{ y: -8, scale: 1.01 }}
             onClick={() => scrollTo('ritual')}
             className="bg-white border border-[rgba(6,15,36,.08)] rounded-2xl sm:rounded-3xl p-7 sm:p-8 md:p-10 cursor-pointer transition-shadow duration-500 hover:shadow-2xl hover:shadow-[rgba(6,15,36,.1)] hover:border-[rgba(18,87,245,.18)]"

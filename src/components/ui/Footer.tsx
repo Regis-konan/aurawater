@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const fadeUp = {
   hidden:  { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 const stagger = {
@@ -36,7 +36,7 @@ export const Footer = () => (
         Aura<span className="text-[#1257F5]">.</span>
       </motion.span>
 
-      {/* Nav links — wraps on mobile */}
+      {/* Nav links */}
       <div className="flex flex-wrap gap-x-6 gap-y-3 sm:gap-8">
         {NAV_LINKS.map((l, i) => (
           <motion.a
@@ -60,7 +60,6 @@ export const Footer = () => (
           <motion.a
             key={s}
             href="#"
-            data-h
             initial={{ scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}
